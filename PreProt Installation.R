@@ -1,0 +1,43 @@
+install.packages("renv")
+renv::init()
+renv::snapshot()
+ install.packages(c("shiny","tidyverse","DT","shinydashboard","shinydashboardPlus"))
+ install.packages(c("tidyverse","data.table","janitor","data.table","ggfortify"))
+install.packages("missRanger","missForest") 
+install.packages(c("reshape2","ggpubr","visdat","plotly","dlookr"))
+install.packages(c("pvca"))
+ if (!require("BiocManager", quietly = TRUE))
+   install.packages("BiocManager")
+
+div
+ 
+ BiocManager::install(c("pcaMethods","impute","imputeLCMD","sva","variancePartition","limma","vsn","pvca"))
+   
+ 
+ library(shiny)
+ library(tidyverse)
+ library(DT)
+ library(shinydashboard)
+ library(shinydashboardPlus)
+ library(data.table)
+ library(DT)
+ library(janitor)# load the package to easily sum columns and rows
+ library(data.table)
+ library(ggfortify)
+ library(scales)
+ library(ggplot2)
+ library(reshape2) 
+ library(ggpubr)
+ library(visdat)
+ library(plotly)
+ library(dlookr)
+ library(missRanger)
+ library(missForest)
+ library(pcaMethods)
+ library(imputeLCMD)
+ library(impute)
+ library(sva)
+ library(limma)
+ library(vsn)
+ library(variancePartition)
+ 
