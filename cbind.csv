@@ -1,9 +1,0 @@
-"","match_rownames","X","sample_batch","sample","Batch","sample_id","sex","run_day","case_control","sample_type","sample._source","sampling_date"
-"1","LFQ.intensity.1_08",1,"1_08",1,1,1,"male",1,"case","plasma","kilifi",1
-"2","LFQ.intensity.2_08",2,"2_08",2,2,3,"male",2,"control","plasma","malindi",2
-"3","LFQ.intensity.4_09",3,"4_09",4,4,4,"female",3,"control","serum","mombasa",3
-"4","LFQ.intensity.5_09",4,"5_09",5,5,5,"male",1,"case","csf","mombasa",3
-"5","LFQ.intensity.6_09",5,"6_09",6,6,6,"male",2,"case","plama","kilifi",2
-"6","LFQ.intensity.7_09",6,"7_09",7,7,8,"female",3,"control","csf","kilifi",2
-"7","LFQ.intensity.8_08",7,"8_08",8,8,9,"female",2,"control","serum","malindi",1
-"8","LFQ.intensity.9_09",8,"9_09",9,9,7,"male",1,"case","serum","malindi",1
