@@ -38,7 +38,7 @@ sidebar <- dashboardSidebar(
   hr(),
   
   menuItem(" Data Cleaning", tabName = "data cleaning",
-           menuSubItem("Filter by Threshold",
+           menuSubItem("Filter by Percentage Threshold",
                        tabName = "filter_missing_tab"),
            menuSubItem("Filter the Contaminants ",
                        tabName = "contaminants_filter_tab")
@@ -225,7 +225,7 @@ body <- dashboardBody(
               solidHeader = T, status = "maroon",
               radioButtons(inputId = "normalization_method",
                            label = "",
-                           choices = c("VSN", "Log Normalization","Cyclicloess","Quantile"))),
+                           choices = c("VSN", "Log Normalization","Cyclic loess","Quantile"))),
         
           
           box(width = 10, title = textOutput(outputId ="normalization_title"),

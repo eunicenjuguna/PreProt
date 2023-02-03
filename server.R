@@ -116,9 +116,9 @@ server <- function(input, output) {
 
     if(input$reporter_intesi_corrected == "Reporter Intensity Corrected"){
 
-      intesity_title = "Reporter intesinty corrected"
+      intesity_title = "Reporter intensity corrected"
     }else{
-      intesity_title = "Reporter intesinty"
+      intesity_title = "Reporter intensity"
     }
 
     intesity_title
@@ -340,7 +340,7 @@ choose_analysis_type<- reactive({
   mnar_calc<- mv_type/ mv_row * 100
   if(mnar_calc >= 80 ){
    
-    "<p> <strong> The missing values in your data are missing at random(MAR)and missing
+    "<p> <strong> The missing values in your data are missing at random (MAR)and missing
     completely at random(MCAR). Select your preferred imputation method in the 
     next step from the first three methods namely; KNN, missRanger or missForest.</strong>
     <br>
@@ -365,7 +365,7 @@ select an imputation method depending on the type of missingness in the data.
 
     
   }else{
-    "<p> <strong> The missing values in your data are missing not at random(MNAR).
+    "<p> <strong> The missing values in your data are missing not at random (MNAR).
     Select QRLIC imputation method imputation method in the next step.</strong> 
         <br>
           This step serves to inform the user about the type of missing values in the
@@ -592,7 +592,7 @@ select an imputation method depending on the type of missingness in the data.
       log_normalization_file()
     }else if(input$normalization_method == "VSN"){
       vsn_normalization_file()
-    }else if(input$normalization_method == "Cyclicloess"){
+    }else if(input$normalization_method == "Cyclic loess"){
       cyclicloess_file()
     }else if(input$normalization_method == "Quantile"){
       quantile_file()
@@ -606,8 +606,8 @@ select an imputation method depending on the type of missingness in the data.
       log_title = "Log Normalization"
     }else if(input$normalization_method == "VSN"){
       log_title = "VSN Normalization"
-    }else if(input$normalization_method == "Cyclicloess"){
-      log_title = " Cyclicloess Normalization"
+    }else if(input$normalization_method == "Cyclic loess"){
+      log_title = " Cyclic loess Normalization"
     }else if(input$normalization_method == "Quantile"){
       log_title = " Quantile Normalization"
     }else{
@@ -672,24 +672,26 @@ select an imputation method depending on the type of missingness in the data.
   variation_source_file <- reactive({
     imp_exp<- choose_imputation_method_file()[-c(2)]%>%
       column_to_rownames("protein.id")%>%
-      select(matches("^reporter.intensity|^Reporter.intensity"))
+      select(matches("^reporter.intensity|^Reporter.intensity|LFQ.intensity|lfq.intensity"))
     
     imp_exp_t <- t(imp_exp)
+   
     
     # info <- read.csv("tmt information.csv", header = T)
     match_rownames<- rownames(imp_exp_t)
     info_info <- cbind(match_rownames,metadata_ouput() )
+  
     pvca_batch_info <- info_info[,-1]
     rownames(pvca_batch_info) <- info_info[,1]
     
     
-    
+    # write.csv(pvca_batch_info,"bachinfo.csv")
     
     # pvca_info <- cbind(imp_exp_t,info)
     
     all(rownames(pvca_batch_info) == colnames(imp_exp))
     
-    
+
     form <- ~(1|batch) + (1|run_day)+ (1|sex) + (1|case_control) + (1|sample_source) +(1|sample_type) +  (1|sampling_date) 
     
     pvca_batch_info$batch<- as.factor(pvca_batch_info$batch)
@@ -699,7 +701,7 @@ select an imputation method depending on the type of missingness in the data.
     pvca_batch_info$sample_source<- as.factor(pvca_batch_info$sample_source)
     pvca_batch_info$sample_type<- as.factor(pvca_batch_info$sample_type)
     pvca_batch_info$sampling_date<- as.factor(pvca_batch_info$sampling_date)
-    
+   # write.csv(pvca_batch_info,"bachinfo1.csv")
     
     
     
